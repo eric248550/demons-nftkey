@@ -88,7 +88,7 @@ func (s Server) Start() {
 	e.GET("/", s.RenderStart)
 	e.GET("/end", s.RenderEnd)
 
-	port := os.Getenv("NFTKEYME_SERVICE_PORT")
+	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
