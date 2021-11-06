@@ -141,6 +141,7 @@ func (s Server) HandleDiscordAuthCode(c echo.Context) (err error) {
 
 // HandleNftkeymeAuthCode handle redirect
 func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
+	logrus.Infof("123")
 	authCode := c.QueryParam("code")
 	state := c.QueryParam("state")
 	logrus.Infof("Handling auth code from nftkeyme with state/discord id %s", state)
@@ -195,9 +196,9 @@ func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
 			return c.JSON(http.StatusInternalServerError, nil)
 		}
 	} else {
-		logrus.Errorf("No trybbles detected in user linked wallet %s", state)
+		logrus.Errorf("No demons detected in user linked wallet %s", state)
 		// tell user they don't have access
-		s.RenderError("No trybbles detected in your linked wallets", c)
+		s.RenderError("No demons detected in your linked wallets", c)
 		return nil
 	}
 
