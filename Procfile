@@ -1,1 +1,1 @@
-go run min.py
+go run main.py
