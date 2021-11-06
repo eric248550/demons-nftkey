@@ -135,13 +135,12 @@ func (s Server) HandleDiscordAuthCode(c echo.Context) (err error) {
 
 	//redirect to nftkey me use state of discord user id
 	url := s.NftkeymeOauthConfig.AuthCodeURL(userInfo.ID)
-
+	logrus.Infof(url)
 	return c.Redirect(302, url)
 }
 
 // HandleNftkeymeAuthCode handle redirect
 func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
-	logrus.Infof("123")
 	authCode := c.QueryParam("code")
 	state := c.QueryParam("state")
 	logrus.Infof("Handling auth code from nftkeyme with state/discord id %s", state)
