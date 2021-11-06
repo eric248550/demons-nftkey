@@ -1,1 +1,1 @@
-go run main.py
+go run main.go
