@@ -135,7 +135,7 @@ func (s Server) HandleDiscordAuthCode(c echo.Context) (err error) {
 
 	//redirect to nftkey me use state of discord user id
 	url := s.NftkeymeOauthConfig.AuthCodeURL(userInfo.ID)
-	logrus.Infof(url)
+	logrus.Infof("url=%s",url)
 	return c.Redirect(302, url)
 }
 
