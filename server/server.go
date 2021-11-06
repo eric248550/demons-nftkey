@@ -87,12 +87,13 @@ func (s Server) Start() {
 	// start / end urls
 	e.GET("/", s.RenderStart)
 	e.GET("/end", s.RenderEnd)
-
+	//log.Fatal(http.ListenAndServe(":" + os.Getenv("PORT"), router))
+	/*
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
-	}
-	e.Logger.Fatal(e.Start(":" + port))
+	}*/
+	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
 }
 
 // GetVersion return build version info
