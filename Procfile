@@ -1,1 +1,1 @@
-go run main.go
+web: bin/demons-web-app
