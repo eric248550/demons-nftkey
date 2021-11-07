@@ -222,7 +222,7 @@ func (s Server) RenderStart(c echo.Context) error {
 		Link        string
 	}{
 		Title:       "100 Demons' Discord",
-		Description: "Gain access to Demons Club discord channel using NFT Key Me!",
+		Description: "Gain access to Demons Club discord channel using NFTKeyMe!",
 		Link:        "/init",
 	}
 	err := c.Render(http.StatusOK, "start.html", start)
