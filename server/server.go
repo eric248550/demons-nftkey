@@ -221,7 +221,7 @@ func (s Server) RenderStart(c echo.Context) error {
 		Description string
 		Link        string
 	}{
-		Title:       "Demons Discord",
+		Title:       "100 Demons' Discord",
 		Description: "Gain access to Demons Club discord channel using NFT Key Me!",
 		Link:        "/init",
 	}
