@@ -110,6 +110,7 @@ func (s Server) GetVersion(c echo.Context) (err error) {
 func (s Server) InitFlow(c echo.Context) (err error) {
 	// redirect to discord auth flow
 	return c.Redirect(302, s.DiscordAuthCodeURL)
+	logrus.Infof("TEST")
 }
 
 // HandleDiscordAuthCode handle redirect
