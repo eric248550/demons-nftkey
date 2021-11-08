@@ -142,7 +142,7 @@ func (s Server) HandleDiscordAuthCode(c echo.Context) (err error) {
 // HandleNftkeymeAuthCode handle redirect
 func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
 	authCode := c.QueryParam("code")
-	state := c.QueryParam("state")
+	//state := c.QueryParam("state")
 	logrus.Infof("Handling auth code from nftkeyme with state/discord id %s", state)
 
 	//exchange code for token
