@@ -74,10 +74,10 @@ header h1 {
 }
 
 .hero.unlocked::before {
-  background-image: url("/static/unlocked-web-large.png");
+  background-image: url("/static/demons-cover.png");
 }
 .hero.locked::before {
-  background-image: url("/static/locked-web-large.png");
+  background-image: url("/static/demons-cover.png");
 }
 
 .hero-title {
@@ -125,10 +125,10 @@ nav {
     background-size: 100% 100%;
   }
   .hero.unlocked::before {
-    background-image: url("/static/unlocked-web-med.png");
+    background-image: url("/static/demons-cover.png");
   }
   .hero.locked::before {
-    background-image: url("/static/locked-web-med.png");
+    background-image: url("/static/demons-cover.png");
   }
   .hero-wrapper {
     margin-right: 24px;
@@ -155,9 +155,9 @@ nav {
 
 @media only screen and (max-width: 420px) {
   .hero.unlocked::before {
-    background-image: url("/static/unlocked-web-small.png");
+    background-image: url("/static/demons-cover.png");
   }
   .hero.locked::before {
-    background-image: url("/static/locked-web-med.png");
+    background-image: url("/static/demons-cover.png");
   }
 }
