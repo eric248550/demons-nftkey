@@ -11,10 +11,10 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/jmoiron/sqlx"
-	"github.com/reliablestaking/nftkeyme-discord/db"
-	"github.com/reliablestaking/nftkeyme-discord/discord"
-	"github.com/reliablestaking/nftkeyme-discord/nftkeyme"
-	"github.com/reliablestaking/nftkeyme-discord/server"
+	"demons-nftkey/nftkeyme-discord/db"
+	"demons-nftkey/nftkeyme-discord/discord"
+	"demons-nftkey/nftkeyme-discord/nftkeyme"
+	"demons-nftkey/nftkeyme-discord/server"
 	"golang.org/x/oauth2"
 
 	"github.com/sirupsen/logrus"

@@ -10,9 +10,9 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/reliablestaking/nftkeyme-discord/db"
-	"github.com/reliablestaking/nftkeyme-discord/discord"
-	"github.com/reliablestaking/nftkeyme-discord/nftkeyme"
+	"demons-nftkey/db"
+	"demons-nftkey/discord"
+	"demons-nftkey/nftkeyme"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 )
