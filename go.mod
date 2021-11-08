@@ -1,4 +1,4 @@
-module github.com/reliablestaking/nftkeyme-discord
+module demons-nftkey
 
 go 1.15
 
