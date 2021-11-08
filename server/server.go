@@ -136,7 +136,6 @@ func (s Server) HandleDiscordAuthCode(c echo.Context) (err error) {
 
 	//redirect to nftkey me use state of discord user id
 	url := s.NftkeymeOauthConfig.AuthCodeURL(userInfo.ID)
-	logrus.Infof("url=%s",url)
 	return c.Redirect(302, url)
 }
 
@@ -147,7 +146,7 @@ func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
 	logrus.Infof("Handling auth code from nftkeyme with state/discord id %s", state)
 
 	//exchange code for token
-	token, err := s.NftkeymeOauthConfig.Exchange(oauth2.NoContext, authCode)
+	token, err := s.NftkeymeOauthConfig.Exchange(c, authCode)
 	if err != nil {
 		logrus.WithError(err).Error("Error exchange code for token")
 		return c.JSON(http.StatusInternalServerError, nil)
