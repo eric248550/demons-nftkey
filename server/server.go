@@ -71,7 +71,7 @@ func (s Server) Start() {
 	// asset / stake key endpoint
 	e.GET("/init", s.InitFlow)
 	e.GET("/discord", s.HandleDiscordAuthCode)
-	e.GET("/nftkeyme", s.HandleNftkeymeAuthCode)
+	e.POST("/nftkeyme", s.HandleNftkeymeAuthCode)
 
 	// version endpoint
 	e.GET("/version", s.GetVersion)
@@ -146,7 +146,7 @@ func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
 	logrus.Infof("Handling auth code from nftkeyme with state/discord id %s", state)
 
 	//exchange code for token
-	token, err := s.NftkeymeOauthConfig.Exchange(c, authCode)
+	token, err := s.NftkeymeOauthConfig.Exchange(oauth2.NoContext, authCode)
 	if err != nil {
 		logrus.WithError(err).Error("Error exchange code for token")
 		return c.JSON(http.StatusInternalServerError, nil)
