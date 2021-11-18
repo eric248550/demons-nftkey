@@ -194,9 +194,9 @@ func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
 			return c.JSON(http.StatusInternalServerError, nil)
 		}
 	} else {
-		logrus.Errorf("No trybbles detected in user linked wallet %s", state)
+		logrus.Errorf("No Amulet detected in user linked wallet %s", state)
 		// tell user they don't have access
-		s.RenderError("No trybbles detected in your linked wallets", c)
+		s.RenderError("No Amulet detected in your linked wallets", c)
 		return nil
 	}
 
@@ -220,8 +220,8 @@ func (s Server) RenderStart(c echo.Context) error {
 		Description string
 		Link        string
 	}{
-		Title:       "Trybbles Discord",
-		Description: "Gain access to Trybbles Club discord channel using NFT Key Me!",
+		Title:       "Demons Discord",
+		Description: "Gain access to Demons Club discord channel using NFT Key Me!",
 		Link:        "/init",
 	}
 	err := c.Render(http.StatusOK, "start.html", start)
@@ -237,7 +237,7 @@ func (s Server) RenderEnd(c echo.Context) error {
 		Description string
 		Link        string
 	}{
-		Description: "You can now access the Trybbles Club discord channel!",
+		Description: "You can now access the Demon Club discord channel!",
 		Link:        "",
 	}
 	err := c.Render(http.StatusOK, "end.html", start)
