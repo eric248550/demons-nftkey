@@ -10,9 +10,9 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"demons-nftkey/db"
-	"demons-nftkey/discord"
-	"demons-nftkey/nftkeyme"
+	"github.com/reliablestaking/nftkeyme-discord/db"
+	"github.com/reliablestaking/nftkeyme-discord/discord"
+	"github.com/reliablestaking/nftkeyme-discord/nftkeyme"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 )
@@ -87,13 +87,12 @@ func (s Server) Start() {
 	// start / end urls
 	e.GET("/", s.RenderStart)
 	e.GET("/end", s.RenderEnd)
-	//log.Fatal(http.ListenAndServe(":" + os.Getenv("PORT"), router))
-	/*
-	port := os.Getenv("PORT")
+
+	port := os.Getenv("NFTKEYME_SERVICE_PORT")
 	if port == "" {
 		port = "8080"
-	}*/
-	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
+	}
+	e.Logger.Fatal(e.Start(":" + port))
 }
 
 // GetVersion return build version info
@@ -110,7 +109,6 @@ func (s Server) GetVersion(c echo.Context) (err error) {
 func (s Server) InitFlow(c echo.Context) (err error) {
 	// redirect to discord auth flow
 	return c.Redirect(302, s.DiscordAuthCodeURL)
-	//logrus.Info("TEST")
 }
 
 // HandleDiscordAuthCode handle redirect
@@ -136,6 +134,7 @@ func (s Server) HandleDiscordAuthCode(c echo.Context) (err error) {
 
 	//redirect to nftkey me use state of discord user id
 	url := s.NftkeymeOauthConfig.AuthCodeURL(userInfo.ID)
+
 	return c.Redirect(302, url)
 }
 
@@ -145,7 +144,7 @@ func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
 	state := c.QueryParam("state")
 	logrus.Infof("Handling auth code from nftkeyme with state/discord id %s", state)
 
-	//exchange code for the token
+	//exchange code for token
 	token, err := s.NftkeymeOauthConfig.Exchange(oauth2.NoContext, authCode)
 	if err != nil {
 		logrus.WithError(err).Error("Error exchange code for token")
@@ -195,9 +194,9 @@ func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
 			return c.JSON(http.StatusInternalServerError, nil)
 		}
 	} else {
-		logrus.Errorf("No demons detected in user linked wallet %s", state)
+		logrus.Errorf("No trybbles detected in user linked wallet %s", state)
 		// tell user they don't have access
-		s.RenderError("No demons detected in your linked wallets", c)
+		s.RenderError("No trybbles detected in your linked wallets", c)
 		return nil
 	}
 
@@ -221,8 +220,8 @@ func (s Server) RenderStart(c echo.Context) error {
 		Description string
 		Link        string
 	}{
-		Title:       "100 Demons' Discord",
-		Description: "Gain access to Demons Club discord channel using NFTKeyMe! ",
+		Title:       "Trybbles Discord",
+		Description: "Gain access to Trybbles Club discord channel using NFT Key Me!",
 		Link:        "/init",
 	}
 	err := c.Render(http.StatusOK, "start.html", start)
@@ -238,7 +237,7 @@ func (s Server) RenderEnd(c echo.Context) error {
 		Description string
 		Link        string
 	}{
-		Description: "You can now access the Demons Club discord channel! ",
+		Description: "You can now access the Trybbles Club discord channel!",
 		Link:        "",
 	}
 	err := c.Render(http.StatusOK, "end.html", start)
