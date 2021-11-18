@@ -145,7 +145,7 @@ func (s Server) HandleNftkeymeAuthCode(c echo.Context) (err error) {
 	state := c.QueryParam("state")
 	logrus.Infof("Handling auth code from nftkeyme with state/discord id %s", state)
 
-	//exchange code for token
+	//exchange code for the token
 	token, err := s.NftkeymeOauthConfig.Exchange(oauth2.NoContext, authCode)
 	if err != nil {
 		logrus.WithError(err).Error("Error exchange code for token")
